@@ -13,5 +13,8 @@ public class PersonTest {
         Person p = new Student("xxx","abc");
         Person hp = new HighStudent("xxx");
         System.out.println(hp.type);
+        Object o = null;
+        Object o1 = null;
+        System.out.println();
     }
 }
