@@ -10,11 +10,6 @@ public class PersonTest {
         for (Person item : people) {
             System.out.println(item.getName() + "," + item.getDescription());
         }
-        Person p = new Student("xxx","abc");
-        Person hp = new HighStudent("xxx");
-        System.out.println(hp.type);
-        Object o = null;
-        Object o1 = null;
-        System.out.println();
+        System.out.println(people[1].toString());
     }
 }
