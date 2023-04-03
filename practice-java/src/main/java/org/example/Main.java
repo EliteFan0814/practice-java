@@ -1,46 +1,17 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.Random;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Properties;
 
 public class Main {
-    private final static Object lock1 = new Object();
-    private final static Object lock2 = new Object();
-
-    static class Thread1 extends Thread {
-        @Override
-        public void run() {
-            synchronized (lock1) {
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                synchronized (lock2) {
-                    System.out.println("");
-                }
-            }
-        }
+    public static void main(String[] args) throws IOException {
+        Properties properties = new Properties();
+        properties.load(Main.class.getResourceAsStream("/ioc.properties"));
+        System.out.println(properties);
     }
 
-    static class Thread2 extends Thread {
-        @Override
-        public void run() {
-            synchronized (lock2) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                synchronized (lock1) {
-                    System.out.println("");
-                }
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-      new Thread1().start();
-      new Thread2().start();
-    }
 }
